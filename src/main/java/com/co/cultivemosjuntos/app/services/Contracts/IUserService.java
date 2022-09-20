@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface IUserService{
 
-    void save(User user);
+    boolean save(User user);
 
-    void update(User user);
+    boolean update(User user);
 
     Optional<UserResponse> get (Long id);
 
