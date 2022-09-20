@@ -7,6 +7,7 @@ import com.co.cultivemosjuntos.app.services.Business.Models.UserResponse;
 import com.co.cultivemosjuntos.app.services.Contracts.IUserService;
 import com.co.cultivemosjuntos.app.utils.Helpers.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,18 +20,30 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Override
-    public void save(User user) {
+    public boolean save(User user) {
+        boolean response = false;
         if (validateData(user)) {
+            user.setPassword(encoder.encode(user.getPassword()));
             userDao.save(UserMapper.userMapper(user));
+            response = true;
         }
+
+        return response;
     }
 
     @Override
-    public void update(User user) {
+    public boolean update(User user) {
+        boolean response = false;
         if (validateData(user)) {
+            user.setPassword(encoder.encode(user.getPassword()));
             userDao.update(UserMapper.userMapper(user));
+            response = true;
         }
+        return response;
     }
 
     @Override
