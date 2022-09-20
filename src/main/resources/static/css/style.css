@@ -1,0 +1,81 @@
+@import "reset.css";
+@import "variables.css";
+@import "header.css";
+@import "main.css";
+@import "footer.css";
+@import "modales.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+.margen_lados_5{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.mostrarf{
+    display: flex !important;
+}
+.nomostrar{
+    display: none !important;
+}
+
+.titulos-movil-700{
+    font-family: 'Urbanist', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.titulos-movil-300{
+    font-family: 'Urbanist', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.margen-10-lados{
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.campo-texto-movil{
+    margin-top: 16px;
+    width: 80%;
+    padding: 10px 10px;
+    border: #388253 solid 1px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px 1px rgba(0,3,6,0.25);
+    text-transform: capitalize;
+}
+
+.boton-positivo-movil{
+    font-family: 'Urbanist', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-verde-oscuro-1);
+    text-transform: uppercase;
+    padding: 10px 40px;
+    background: #FFFFFF;
+    border: 5px solid var(--color-verde-oscuro-1);
+    border-radius: 40px;
+    margin-top: 20px;
+}
+.boton-negativo-movil{
+    border: none;
+    font-family: 'Urbanist', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 40px;
+    padding: 10px 40px;
+    margin-top: 15px;
+    background-color: var(--color-modal-login-boton-cancelar);
+    color: white;
+    text-transform: uppercase;
+}
+
+.link-modales-movil{
+    margin-top: 20px;
+    color:var(--color-text-nuestro-equipo-azul);
+    text-transform: capitalize;
+}
