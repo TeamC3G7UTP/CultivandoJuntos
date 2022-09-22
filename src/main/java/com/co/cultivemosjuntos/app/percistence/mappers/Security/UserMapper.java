@@ -23,7 +23,8 @@ public class UserMapper {
             userEntity.setUsername(user.getUsername());
             userEntity.setPassword(user.getPassword());
             userEntity.setCreationDate(LocalDate.now());
-            userEntity.setFirstAdmission(false);
+            userEntity.setFirstAdmission(true);
+
         }
         return userEntity;
     }
