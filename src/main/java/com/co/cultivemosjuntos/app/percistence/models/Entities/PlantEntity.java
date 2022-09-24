@@ -25,8 +25,9 @@ public class PlantEntity implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "id_tipoplanta")
-    private Long idTypePlant;
+    @ManyToOne
+    @JoinColumn(name = "id_tipoplanta")
+    private TypePlantEntity typePlant;
 
     @Getter
     @Setter
