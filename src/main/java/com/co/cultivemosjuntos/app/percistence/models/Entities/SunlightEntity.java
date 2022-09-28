@@ -9,9 +9,10 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TCJ_TIPO_PLANTA")
+@Table(name = "TCJ_LUZ_SOLAR")
 @ToString
-public class TypePlantEntity implements Serializable {
+public class SunlightEntity implements Serializable {
+
     @Serial
     private  static final long serialVersionUID = 1L;
 
@@ -22,8 +23,9 @@ public class TypePlantEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Getter
     @Setter
-    @Column(name = "nombre_tipo")
-    private String typeName;
+    @Column(name = "intensidad_solar")
+    private String solarIntensity;
 }
