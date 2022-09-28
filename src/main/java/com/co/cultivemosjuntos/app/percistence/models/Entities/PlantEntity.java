@@ -46,8 +46,9 @@ public class PlantEntity implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "id_luz_solar")
-    private Long idSunlight;
+    @ManyToOne
+    @JoinColumn(name = "id_luz_solar")
+    private SunlightEntity sunlight;
 
     @Getter
     @Setter
