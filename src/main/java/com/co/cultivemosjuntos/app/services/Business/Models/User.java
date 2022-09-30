@@ -1,13 +1,17 @@
 package com.co.cultivemosjuntos.app.services.Business.Models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
 
+@ToString
+@EqualsAndHashCode
 public class User {
 
     @NotEmpty
@@ -29,14 +33,7 @@ public class User {
 
     @NotEmpty
     @Setter @Getter
-    private LocalDate creationDate;
-
-    @NotEmpty
-    @Setter @Getter
     private String password;
 
-
-    @Setter @Getter
-    private boolean firstAdmission;
 }
 
