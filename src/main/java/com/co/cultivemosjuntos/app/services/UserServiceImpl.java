@@ -2,6 +2,7 @@ package com.co.cultivemosjuntos.app.services;
 
 import com.co.cultivemosjuntos.app.percistence.dao.Contracts.IUserDao;
 import com.co.cultivemosjuntos.app.percistence.mappers.Security.UserMapper;
+import com.co.cultivemosjuntos.app.percistence.models.Entities.UserEntity;
 import com.co.cultivemosjuntos.app.services.Business.Models.User;
 import com.co.cultivemosjuntos.app.services.Business.Models.UserResponse;
 import com.co.cultivemosjuntos.app.services.Contracts.IUserService;
@@ -10,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -24,9 +27,10 @@ public class UserServiceImpl implements IUserService {
     private BCryptPasswordEncoder encoder;
 
     @Override
+    @Transactional
     public boolean save(User user) {
         boolean response = false;
-        if (validateData(user)) {
+        if (!validateData(user)) {
             user.setPassword(encoder.encode(user.getPassword()));
             userDao.save(UserMapper.userMapper(user));
             response = true;
@@ -36,12 +40,15 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @Transactional
     public boolean update(User user) {
         boolean response = false;
-        if (validateData(user)) {
-            user.setPassword(encoder.encode(user.getPassword()));
-            userDao.update(UserMapper.userMapper(user));
-            response = true;
+        if (!validateData(user)) {
+            UserEntity userTemp = userDao.getUserByUsername(user.getUsername());
+            if (userTemp != null) {
+                user.setPassword(encoder.encode(user.getPassword()));
+                response = userDao.update(UserMapper.userUpdateMapper(user, userTemp));
+            }
         }
         return response;
     }
@@ -49,7 +56,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     @Transactional
     public Optional<UserResponse> get(Long id) {
-        return Optional.of(UserMapper.userMapper(userDao.get(id).orElse(null)));
+        return Optional.ofNullable(UserMapper.userMapper(userDao.get(id).orElse(null)));
     }
 
     @Override
@@ -59,13 +66,33 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @Transactional
     public boolean existsUserByUsername(String username) {
-        return userDao.existsUserByUsername(username);
+        if (!isValid(username)) {
+            return userDao.existsUserByUsername(username);
+        }
+        return false;
     }
 
     @Override
+    @Transactional
     public UserResponse getUserByUsername(String username) {
-        return UserMapper.userMapper(userDao.getUserByUsername(username));
+        if (!isValid(username)) {
+            return UserMapper.userMapper(userDao.getUserByUsername(username));
+        }
+        return null;
+    }
+    @Override
+    @Transactional
+    public boolean updateState(Long id) {
+        boolean response = false;
+        var user = userDao.get(id);
+        if (user.isPresent() && !user.isEmpty()) {
+            UserEntity userEntity = user.get();
+            userEntity.setFirstAdmission(false);
+             response = userDao.update(userEntity);
+        }
+        return response;
     }
 
     private boolean validateData(User user) {
@@ -77,6 +104,10 @@ public class UserServiceImpl implements IUserService {
 
     private boolean isValid(String data) {
         return data.isEmpty() || data.isBlank();
+    }
+
+    private boolean isValidId(Long id) {
+        return Objects.isNull(id) || id < 0;
     }
 
 

@@ -30,12 +30,13 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public void save(UserEntity userEntity) {
-        executeInsideTransaction(entityManager -> entityManager.persist(userEntity));
+        entityManager.persist(userEntity);
     }
 
     @Override
-    public void update(UserEntity userEntity) {
-        executeInsideTransaction(entityManager -> entityManager.merge(userEntity));
+    public boolean update(UserEntity userEntity) {
+        var response = entityManager.merge(userEntity);
+        return response != null;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class UserDaoImpl implements IUserDao {
     public boolean existsUserByUsername(String username) {
         return getAll()
                 .stream()
-                .allMatch(user -> user.getUsername().equals(username));
+                .anyMatch(user -> user.getUsername().equals(username));
     }
 
     @Override
@@ -66,7 +67,7 @@ public class UserDaoImpl implements IUserDao {
         try {
             tx.begin();
             action.accept(entityManager);
-            tx.commit();
+            /* tx.commit();*/
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;

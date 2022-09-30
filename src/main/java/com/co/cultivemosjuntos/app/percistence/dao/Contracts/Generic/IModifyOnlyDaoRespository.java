@@ -4,7 +4,7 @@ public interface IModifyOnlyDaoRespository <T>{
 
     void save(T t);
 
-    void update(T t);
+    boolean update(T t);
 
     void delete(T t);
 }

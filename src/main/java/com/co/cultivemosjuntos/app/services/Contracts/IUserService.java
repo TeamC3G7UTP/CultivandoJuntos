@@ -10,16 +10,12 @@ import java.util.Optional;
 public interface IUserService{
 
     boolean save(User user);
-
     boolean update(User user);
-
     Optional<UserResponse> get (Long id);
-
     List<UserResponse> getAll();
-
     boolean existsUserByUsername(String username);
-
     UserResponse getUserByUsername(String username);
+    boolean updateState(Long id);
 
 
 }
