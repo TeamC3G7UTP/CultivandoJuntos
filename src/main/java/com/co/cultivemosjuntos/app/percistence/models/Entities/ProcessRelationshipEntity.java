@@ -9,10 +9,9 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TCJ_DIFICULTAD")
+@Table(name = "TCJ_RELACION_PROCESOS")
 @ToString
-public class Dificulty implements Serializable {
-
+public class ProcessRelationshipEntity  implements Serializable {
 
     @Serial
     private  static final long serialVersionUID = 1L;
@@ -26,7 +25,20 @@ public class Dificulty implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "info_dificultad")
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "id_planta")
+    private PlantEntity plant;
+
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private UserEntity user;
+
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_proceso")
+    private ProcessEntity process;
 
 }
