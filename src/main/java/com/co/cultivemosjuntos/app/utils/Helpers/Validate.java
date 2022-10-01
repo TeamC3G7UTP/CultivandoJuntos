@@ -1,5 +1,6 @@
 package com.co.cultivemosjuntos.app.utils.Helpers;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Validate {
@@ -16,5 +17,9 @@ public class Validate {
                 .matcher(email)
                 .matches();
 
+    }
+
+    public static boolean isValidId(Long id) {
+        return Objects.isNull(id) || id < 0;
     }
 }
