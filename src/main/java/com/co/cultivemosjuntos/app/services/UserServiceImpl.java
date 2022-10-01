@@ -56,7 +56,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     @Transactional
     public Optional<UserResponse> get(Long id) {
-        return Optional.ofNullable(UserMapper.userMapper(userDao.get(id).orElse(null)));
+        Optional<UserResponse> response = null;
+        if (!isValidId(id)){
+            response = Optional.ofNullable(UserMapper.userMapper(userDao.get(id).orElse(null)));
+        }
+       return response;
     }
 
     @Override

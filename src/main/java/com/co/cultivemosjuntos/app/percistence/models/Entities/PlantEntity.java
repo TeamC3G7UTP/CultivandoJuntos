@@ -26,7 +26,7 @@ public class PlantEntity implements Serializable {
     @Getter
     @Setter
     @ManyToOne
-    @JoinColumn(name = "id_tipoplanta")
+    @JoinColumn(name = "id_tipo_planta")
     private TypePlantEntity typePlant;
 
     @Getter
@@ -52,8 +52,9 @@ public class PlantEntity implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "id_dificultad")
-    private Long IdDifficulty;
+    @ManyToOne
+    @JoinColumn(name = "id_dificultad")
+    private Dificulty dificulty;
 
     @Getter
     @Setter
@@ -62,13 +63,15 @@ public class PlantEntity implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "id_espacio")
-    private Long IdSpace;
+    @ManyToOne
+    @JoinColumn(name = "id_espacio")
+    private Space space;
 
     @Getter
     @Setter
-    @Column(name = "id_piso_termico")
-    private Long IdThermalFloor;
+    @ManyToOne
+    @JoinColumn(name = "id_piso_termico")
+    private ThermalFloor thermalFloor;
 
     @Getter
     @Setter
