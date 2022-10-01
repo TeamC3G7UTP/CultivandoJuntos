@@ -1,6 +1,5 @@
 package com.co.cultivemosjuntos.app.percistence.models.Entities;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,9 +9,9 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TCJ_ESPACIO")
+@Table(name = "TCJ_PISO_TERMICO")
 @ToString
-public class Space implements Serializable {
+public class ThermalFloorEntity implements Serializable {
 
     @Serial
     private  static final long serialVersionUID = 1L;
@@ -26,6 +25,7 @@ public class Space implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "espacio")
-    private Float space;
+    @Column(name = "pisos_termicos")
+    private String description;
+
 }

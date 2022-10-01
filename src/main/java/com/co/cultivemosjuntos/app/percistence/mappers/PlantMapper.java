@@ -12,9 +12,7 @@ public class PlantMapper {
     public static List<PlantResponse> plantMapper(List<PlantEntity> plants) {
         List<PlantResponse> responses = new ArrayList<>();
         if (!plants.isEmpty()) {
-            plants.forEach(plantEntity -> {
-                responses.add(getPlanResponse(getDetail(plantEntity), plantEntity));
-            });
+            plants.forEach(plantEntity -> responses.add(getPlanResponse(getDetail(plantEntity), plantEntity)));
         }
         return responses;
     }

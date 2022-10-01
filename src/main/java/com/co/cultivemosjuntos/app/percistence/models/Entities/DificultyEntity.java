@@ -9,9 +9,10 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TCJ_PISO_TERMICO")
+@Table(name = "TCJ_DIFICULTAD")
 @ToString
-public class ThermalFloor implements Serializable {
+public class DificultyEntity implements Serializable {
+
 
     @Serial
     private  static final long serialVersionUID = 1L;
@@ -25,7 +26,7 @@ public class ThermalFloor implements Serializable {
 
     @Getter
     @Setter
-    @Column(name = "pisos_termicos")
+    @Column(name = "info_dificultad")
     private String description;
 
 }

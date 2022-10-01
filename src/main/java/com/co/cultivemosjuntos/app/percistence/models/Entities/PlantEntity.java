@@ -54,7 +54,7 @@ public class PlantEntity implements Serializable {
     @Setter
     @ManyToOne
     @JoinColumn(name = "id_dificultad")
-    private Dificulty dificulty;
+    private DificultyEntity dificulty;
 
     @Getter
     @Setter
@@ -65,13 +65,13 @@ public class PlantEntity implements Serializable {
     @Setter
     @ManyToOne
     @JoinColumn(name = "id_espacio")
-    private Space space;
+    private SpaceEntity space;
 
     @Getter
     @Setter
     @ManyToOne
     @JoinColumn(name = "id_piso_termico")
-    private ThermalFloor thermalFloor;
+    private ThermalFloorEntity thermalFloor;
 
     @Getter
     @Setter
