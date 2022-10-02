@@ -15,7 +15,8 @@ import javax.validation.constraints.NotEmpty;
 public class UserResponse {
 
     @Id
-    @Getter @Setter
+    @Getter
+    @Setter
     private Long id;
 
     @NotEmpty

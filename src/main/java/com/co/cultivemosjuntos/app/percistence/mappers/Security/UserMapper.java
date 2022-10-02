@@ -55,7 +55,7 @@ public class UserMapper {
 
     public static List<UserResponse> userMapper(List<UserEntity> users) {
         List<UserResponse> userResponses = new ArrayList<>();
-        if(!users.isEmpty()){
+        if (!users.isEmpty()) {
             users.forEach((user) -> {
                 UserResponse userResponse = new UserResponse();
                 userResponse.setId(user.getId());

@@ -28,8 +28,8 @@ public class PlantServiceImpl implements IPlantService {
     @Override
     public PlantResponse get(Long id) {
         PlantResponse response = null;
-        if (!Validate.isValidId(id)){
-            response = PlantMapper.plantMapper(plantDao.get(id).orElse(null)) ;
+        if (!Validate.isValidId(id)) {
+            response = PlantMapper.plantMapper(plantDao.get(id).orElse(null));
         }
         return response;
     }

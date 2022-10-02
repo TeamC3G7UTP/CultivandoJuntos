@@ -22,6 +22,7 @@ public class ProcessDao implements IProcessDao {
     public void save(ProcessEntity processEntity) {
         entityManager.persist(processEntity);
     }
+
     @Override
     public boolean update(ProcessEntity processEntity) {
         var response = entityManager.merge(processEntity);
@@ -45,21 +46,21 @@ public class ProcessDao implements IProcessDao {
     }
 
     @Override
-    public List<ProcessEntity> processesForUser(Long userId){
-        return  getAll().
-                    stream()
-                        .filter(x -> Objects.equals(x.getUser().getId(), userId))
-                            .collect(Collectors.toList());
+    public List<ProcessEntity> processesForUser(Long userId) {
+        return getAll().
+                stream()
+                .filter(x -> Objects.equals(x.getUser().getId(), userId))
+                .collect(Collectors.toList());
 
     }
 
     @Override
     public boolean validateAssignmentProcesses(Long userId, Long plantId) {
         return getAll()
-                    .parallelStream()
-                        .anyMatch(x ->
-                                !(x.getUser().getId().equals(userId)
-                                        && x.getPlant().getId().equals(plantId)
-                                            && !x.isFinalized()));
+                .parallelStream()
+                .anyMatch(x ->
+                        !(x.getUser().getId().equals(userId)
+                                && x.getPlant().getId().equals(plantId)
+                                && !x.isFinalized()));
     }
 }

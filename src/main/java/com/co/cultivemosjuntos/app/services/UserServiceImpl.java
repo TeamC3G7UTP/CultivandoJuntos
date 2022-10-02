@@ -56,10 +56,10 @@ public class UserServiceImpl implements IUserService {
     @Transactional
     public Optional<UserResponse> get(Long id) {
         Optional<UserResponse> response = null;
-        if (!isValidId(id)){
+        if (!isValidId(id)) {
             response = Optional.ofNullable(UserMapper.userMapper(userDao.get(id).orElse(null)));
         }
-       return response;
+        return response;
     }
 
     @Override
@@ -85,6 +85,7 @@ public class UserServiceImpl implements IUserService {
         }
         return null;
     }
+
     @Override
     @Transactional
     public boolean updateState(Long id) {
@@ -93,7 +94,7 @@ public class UserServiceImpl implements IUserService {
         if (user.isPresent() && !user.isEmpty()) {
             UserEntity userEntity = user.get();
             userEntity.setFirstAdmission(false);
-             response = userDao.update(userEntity);
+            response = userDao.update(userEntity);
         }
         return response;
     }
@@ -102,9 +103,9 @@ public class UserServiceImpl implements IUserService {
     @Transactional
     public boolean firstAdmission(Long id) {
         boolean result = false;
-        if (!isValidId(id)){
+        if (!isValidId(id)) {
             UserEntity userEntity = userDao.get(id).orElse(null);
-            if(userEntity != null){
+            if (userEntity != null) {
                 result = userEntity.isFirstAdmission();
             }
         }

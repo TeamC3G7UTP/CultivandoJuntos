@@ -13,17 +13,19 @@ import java.io.Serializable;
 
 @ToString
 @EqualsAndHashCode
-public class UserLogin implements Serializable  {
+public class UserLogin implements Serializable {
 
     @Serial
-    private  static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String username;
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String password;
 }

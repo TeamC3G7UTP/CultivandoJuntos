@@ -11,5 +11,5 @@ public interface IPlantService {
 
     List<PlantResponse> getAll();
 
-    PlantResponse get (Long id);
+    PlantResponse get(Long id);
 }
