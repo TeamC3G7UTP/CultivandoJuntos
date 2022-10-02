@@ -23,6 +23,18 @@ public class ProcessEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private UserEntity user;
+
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_planta")
+    private PlantEntity plant;
+
     @Setter
     @Getter
     @Column(name = "sembrado", nullable = false, columnDefinition = "BIT", length = 1)
@@ -42,11 +54,15 @@ public class ProcessEntity implements Serializable {
     @Getter
     @Column(name = "riego", nullable = false, columnDefinition = "BIT", length = 1)
     private boolean irrigation;
-    
+
     @Setter
     @Getter
     @Column(name = "cosecha", nullable = false, columnDefinition = "BIT", length = 1)
     private boolean harvest;
 
+    @Setter
+    @Getter
+    @Column(name = "finalizado", nullable = false, columnDefinition = "BIT", length = 1)
+    private boolean finalized;
 
 }
