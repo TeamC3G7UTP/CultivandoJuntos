@@ -22,7 +22,6 @@ public class PlantController {
     public Map<String, Object> getPlants() {
         return ApiResponse.responseMethod(plantService.getAll());
     }
-
     @GetMapping(value = "/Plant/{id}")
     public Map<String, Object> getPlant(@PathVariable Long id) {
         return ApiResponse.responseMethod(plantService.get(id));

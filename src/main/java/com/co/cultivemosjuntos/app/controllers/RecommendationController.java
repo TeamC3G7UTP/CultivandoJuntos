@@ -20,7 +20,7 @@ public class RecommendationController {
     @Autowired
     IRecommendationService recommendationService;
 
-    @PostMapping(value = "/Plantrecommendation")
+    @PostMapping(value = "/PlantRecommendation")
     public Map<String, Object> getPlantRecommendation(@RequestBody Recommendation recommendation){
         return  ApiResponse.responseMethod(recommendationService.plantRecommendation(recommendation));
     }

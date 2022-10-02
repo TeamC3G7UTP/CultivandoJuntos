@@ -13,7 +13,7 @@ import java.io.Serializable;
 @ToString
 public class TypePlantEntity implements Serializable {
     @Serial
-    private  static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Getter

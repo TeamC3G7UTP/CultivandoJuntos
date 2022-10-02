@@ -23,22 +23,22 @@ public class RecommendationService implements IRecommendationService {
     @Override
     @Transactional
     public List<PlantResponse> plantRecommendation(Recommendation recommendation) {
-        if (validateRecommendation(recommendation)){
+        if (validateRecommendation(recommendation)) {
             List<PlantEntity> plantEntityList = plantDao.getAll()
-                    .stream().filter(x-> x.getDificulty().getId().equals(recommendation.getPlantingExperience()))
+                    .stream().filter(x -> x.getDificulty().getId().equals(recommendation.getPlantingExperience()))
                     .filter(x -> recommendation.getSpace() <= x.getSpace().getSpace()
                             || x.getThermalFloor().getId().equals(recommendation.getThermalFloor())
                             || x.getSunlight().getId().equals(recommendation.getSunlight())).collect(Collectors.toList());
-            if(!plantEntityList.isEmpty()){
+            if (!plantEntityList.isEmpty()) {
                 return PlantMapper.plantMapper(plantEntityList);
-            }else {
+            } else {
                 return PlantMapper.plantMapper(plantDao.getAll()
                         .stream()
                         .filter(x -> x.getDificulty().getId() == 1)
                         .collect(Collectors.toList()));
             }
         }
-          return null;
+        return null;
     }
 
     private boolean validateRecommendation(Recommendation recommendation) {

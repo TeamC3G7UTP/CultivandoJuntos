@@ -26,14 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity security) throws Exception
-    {
+    protected void configure(HttpSecurity security) throws Exception {
         security.httpBasic().disable();
         security.cors().and().csrf().disable();
         security.antMatcher("/**");
 
 
     }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowedOrigins(Collections.singletonList("*"));
-       /* configuration.setAllowedOrigins(List.of("http://localhost:8080", "http://127.0.0.1:5500/"));*/
+        /* configuration.setAllowedOrigins(List.of("http://localhost:8080", "http://127.0.0.1:5500/"));*/
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

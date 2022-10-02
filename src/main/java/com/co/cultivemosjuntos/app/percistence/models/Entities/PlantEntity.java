@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class PlantEntity implements Serializable {
 
     @Serial
-    private  static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Getter
@@ -77,8 +77,6 @@ public class PlantEntity implements Serializable {
     @Setter
     @Column(name = "url_imagen")
     private String ImageUrl;
-
-
 
 
 }

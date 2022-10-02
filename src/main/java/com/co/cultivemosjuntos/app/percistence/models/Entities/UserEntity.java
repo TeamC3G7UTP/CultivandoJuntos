@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serial;
@@ -20,37 +21,53 @@ import java.util.Objects;
 public class UserEntity implements Serializable {
 
     @Serial
-    private  static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Getter @Setter @Column(name = "id")
+    @Getter
+    @Setter
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty
-    @Setter @Getter @Column(name = "nombre")
+    @Setter
+    @Getter
+    @Column(name = "nombre")
     private String name;
 
     @NotEmpty
-    @Setter @Getter @Column(name = "apellido")
+    @Setter
+    @Getter
+    @Column(name = "apellido")
     private String lastName;
 
     @NotEmpty
-    @Setter @Getter @Column(name = "correo")
+    @Setter
+    @Getter
+    @Column(name = "correo")
     private String email;
 
     @NotEmpty
-    @Setter @Getter @Column(name = "nombre_usuario")
+    @Setter
+    @Getter
+    @Column(name = "nombre_usuario")
     private String username;
 
-    @Setter @Getter @Column(name = "fecha_creacion")
+    @Setter
+    @Getter
+    @Column(name = "fecha_creacion")
     private LocalDate creationDate;
 
     @NotEmpty
-    @Setter @Getter @Column(name = "contrasena")
+    @Setter
+    @Getter
+    @Column(name = "contrasena")
     private String password;
 
-    @Setter @Getter  @Column(name = "primer_ingreso", nullable = false, columnDefinition = "TINYINT", length = 1)
+    @Setter
+    @Getter
+    @Column(name = "primer_ingreso", nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean firstAdmission;
 
 

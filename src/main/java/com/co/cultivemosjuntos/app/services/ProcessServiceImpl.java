@@ -80,7 +80,7 @@ public class ProcessServiceImpl implements IProcessService {
     @Transactional
     public UserProcess processesForUser(Long userId) {
         if (!Validate.isValidId(userId)) {
-            return  ProcessMapper.proccesesByUser(processDao.processesForUser(userId)) ;
+            return ProcessMapper.proccesesByUser(processDao.processesForUser(userId));
         }
         return null;
     }

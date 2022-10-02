@@ -17,11 +17,11 @@ public class PlantMapper {
         return responses;
     }
 
-    public static PlantResponse plantMapper(PlantEntity plantEntity){
+    public static PlantResponse plantMapper(PlantEntity plantEntity) {
         return getPlanResponse(getDetail(plantEntity), plantEntity);
     }
 
-    private static List<PlantDetail> getDetail (PlantEntity plantEntity) {
+    private static List<PlantDetail> getDetail(PlantEntity plantEntity) {
         PlantDetail plantDetail = new PlantDetail();
         if (plantEntity != null) {
             plantDetail.setTypeName(plantEntity.getTypePlant().getTypeName());

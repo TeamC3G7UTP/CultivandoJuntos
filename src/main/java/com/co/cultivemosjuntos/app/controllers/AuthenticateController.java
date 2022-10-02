@@ -24,12 +24,10 @@ public class AuthenticateController {
     public Map<String, Object> login(@RequestBody UserLogin userLogin) {
         return ApiResponse.responseMethod(authenticateService.login(userLogin));
     }
-
     @PostMapping(value = "/RequestRecovery")
     public Map<String, Object> requestRecovery(@RequestBody UserLogin userLogin){
         return  ApiResponse.responseMethod(authenticateService.requestRecovery(userLogin));
     }
-
     @PostMapping(value = "/RecoveryPassword")
     public Map<String, Object> recoveryPassword(@RequestBody UserLogin userLogin){
         return  ApiResponse.responseMethod(authenticateService.requestRecovery(userLogin));

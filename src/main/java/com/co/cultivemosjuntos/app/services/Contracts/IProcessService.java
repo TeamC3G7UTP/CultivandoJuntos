@@ -14,9 +14,13 @@ public interface IProcessService {
     boolean save(ProcessCreate processCreate);
 
     boolean delete(Long id);
+
     boolean update(ProcessUpdate processUpdate);
+
     ProcessResponse get(Long id);
+
     List<ProcessResponse> getAll();
+
     UserProcess processesForUser(Long userId);
 
 

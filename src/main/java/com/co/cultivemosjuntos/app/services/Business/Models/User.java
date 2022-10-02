@@ -15,24 +15,29 @@ import java.time.LocalDate;
 public class User {
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String name;
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String lastName;
 
     @NotEmpty
     @Email
-    @Setter @Getter
+    @Setter
+    @Getter
     private String email;
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String username;
 
     @NotEmpty
-    @Setter @Getter
+    @Setter
+    @Getter
     private String password;
 
 }

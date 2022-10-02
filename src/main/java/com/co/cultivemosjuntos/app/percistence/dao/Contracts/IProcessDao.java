@@ -8,7 +8,6 @@ import java.util.List;
 public interface IProcessDao extends IDaoRepository<ProcessEntity> {
 
     public List<ProcessEntity> processesForUser(Long userId);
-
     public boolean validateAssignmentProcesses(Long userId, Long plantId);
 
 }
