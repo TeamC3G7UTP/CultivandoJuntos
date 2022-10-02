@@ -19,6 +19,7 @@ public class AuthenticateController {
 
     @Autowired
     private IAuthenticateService authenticateService;
+
     @PostMapping(value = "/Login")
     public Map<String, Object> login(@RequestBody UserLogin userLogin) {
         return ApiResponse.responseMethod(authenticateService.login(userLogin));

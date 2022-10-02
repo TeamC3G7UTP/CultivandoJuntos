@@ -32,6 +32,10 @@ public class UserController {
     public Map<String, Object> getUser(@PathVariable Long id) {
         return ApiResponse.responseMethod(userService.get(id).orElse(null));
     }
+    @GetMapping(value = "/FirstAdmission/{id}")
+    public Map<String, Object> firstAdmission(@PathVariable Long id) {
+        return ApiResponse.responseMethod(userService.firstAdmission(id));
+    }
     @GetMapping(value = "/UserExist/{username}")
     public Map<String, Object> existUserByUserName(@PathVariable String username) {
         return ApiResponse.responseMethod(userService.existsUserByUsername(username));

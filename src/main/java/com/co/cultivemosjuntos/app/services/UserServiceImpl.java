@@ -98,6 +98,19 @@ public class UserServiceImpl implements IUserService {
         return response;
     }
 
+    @Override
+    @Transactional
+    public boolean firstAdmission(Long id) {
+        boolean result = false;
+        if (!isValidId(id)){
+            UserEntity userEntity = userDao.get(id).orElse(null);
+            if(userEntity != null){
+                result = userEntity.isFirstAdmission();
+            }
+        }
+        return result;
+    }
+
     private boolean validateData(User user) {
         return isValid(user.getName())
                 && isValid(user.getLastName())

@@ -16,6 +16,8 @@ public interface IUserService{
     boolean existsUserByUsername(String username);
     UserResponse getUserByUsername(String username);
     boolean updateState(Long id);
+    boolean firstAdmission(Long id);
+
 
 
 }
